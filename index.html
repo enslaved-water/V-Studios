@@ -1,7 +1,245 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V Studios</title>
+    <style>
+        /* Set the body background to purple */
+        body {
+            background-color: #d869d8;
+            color: black; /* Set text color to white for better contrast */
+            font-family: Verdana, sans-serif; /* Specify font family */
+        }
+
+        h3, p {
+            text-align: center;
+        }
+
+        /* Style the tabs */
+        .tab {
+            float: left;
+            border: 1px solid #000000;
+            background-color: plum;
+            width: 100%;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            width: 100%;
+        }
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #c7aec7;
+        }
+
+        /* Create an active/current "tab button" class */
+        .tab button.active {
+            background-color: #b69db6;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            float: left;
+            padding: 0 0.5px;
+            border: 1px solid #000000;
+            width: 100%; /* Adjust width as needed */
+            border-left: none;
+            height: 300px; /* Set the height of the tab content */
+            display: none;
+          	animation: fadeEffect 1s; /* Fading effect takes 1 second */
+        }
+
+				/* Go from zero to full opacity */
+				@keyframes fadeEffect {
+  			from {opacity: 0;}
+  			to {opacity: 1;}
+				}
+      #myDIV {
+  border: 1px solid black;
+  background-color: lightblue;
+  width: 270px;
+  height: 200px;
+  overflow: auto;
+}
+
+#myDIV:hover {
+  background-color: coral;
+  width: 570px;
+  height: 500px;
+  padding: 100px;
+  border-radius: 50px;
+}
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V Studios</title>
+    <style>
+    h1 {text-align: center;}
+        .big-heading {
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="big-heading">V Studios</h1>
+</body>
+<div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'Intro')">Intro</button>
+    <button class="tablinks" onclick="openTab(event, 'Updates')">Updates</button>
+    <button class="tablinks" onclick="openTab(event, 'Art')">Art</button>
+    <button class="tablinks" onclick="openTab(event, 'Written Works')">Written Works</button>
+    <button class="tablinks" onclick="openTab(event, 'Book')">Book</button>
+    <button class="tablinks" onclick="openTab(event, 'Support')">Support</button>
+  <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
+ 
+</div>
+
+  <div id="Intro" class="tabcontent">
+    <h3>Intro</h3>
+    <p>This is the Intro tab content.</p>
+</div>
+  
+<div id="Updates" class="tabcontent">
+    <h3>Updates</h3>
+  	<p><b>April 4, 2024</b><br>The V Studios website is open!</p>
+    <p><b>April 1, 2024</b><br>funnny lttle haha</p>
+  	<a href="https://drive.google.com/file/d/1WVpj242Py6sqOHw0NYMM2lUvKEJqW4vo/view?usp=sharing" target="_blank"><button>Click Me!</button></a>
+</div>
+
+<div id="Art" class="tabcontent">
+    <h3>Art</h3>
+    <p>This is the Art tab content.</p>
+</div>
+
+<div id="Written Works" class="tabcontent">
+    <h3>Written Works</h3>
+    <p>This is the Written Works tab content.</p>
+</div>
+<div id="Book" class="tabcontent">
+    <h3>Book</h3>
+<p>This, once I get more into my book and not just the planning process, will be where my book is! </p>
+    
+<p>The idea of my story is that a MC is a reborn warrior from a magic world. Which is slowly bleeding into ours.</p>
+<a href="https://drive.google.com/file/d/1WVpj242Py6sqOHw0NYMM2lUvKEJqW4vo/view?usp=sharing" target="_blank"><button>Take me to the book…</button></a>
+
+</div>
+  <div id="Support" class="tabcontent">
+    <h3>Support</h3>
+    <a href="https://drive.google.com/file/d/1WVpj242Py6sqOHw0NYMM2lUvKEJqW4vo/view?usp=sharing" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Patreon_logo.svg/800px-Patreon_logo.svg.png" alt="Patreon Link" style="width:100px;"></a>
+    <p>Click the logo to see my Patreon!</p>
+</div>
+  
+<!-- CONTACKKKKKKK -->
+<div id="Contact" class="tabcontent">
+  <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Box</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        .ask-box {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #EE82EE;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .ask-box h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .ask-box input[type="text"],
+        .ask-box textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .ask-box textarea {
+            height: 120px;
+        }
+        .ask-box button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .ask-box button:hover {
+            background-color: #0056b3;
+        }
+      	a:link {
+  					color: slateblue;
+  					background-color: transparent;
+  					text-decoration: none;
+				}
+
+				a:visited {
+ 						color: black;
+  					background-color: transparent;
+  					text-decoration: none;
+				}
+
+				a:hover {
+  					color: cyan;
+  					background-color: transparent;
+  					text-decoration: underline;
+				}
+
+				a:active {
+  					color: red;
+  					background-color: transparent;
+  					text-decoration: underline;
+      }
+    </style>
+</head>
+<body>
+    <h3>Contact</h3>
+   	<div class="ask-box">
+    <h2><a href="https://mail.google.com/mail/u/0/?fs=1&to=valandooni@gmail.com&su=Ask+Me+Anything!&body=Put+your+question+here+(and+delete+this+once+you%27re+done)!&tf=cm" target="_blank">Ask a Question...</a></h2>
+</div>
+  	<p>Press up there!</p>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+</script>
+
 </body>
 </html>
