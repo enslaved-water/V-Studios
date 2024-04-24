@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Calendar with Tasks</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+}
+
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev, .month .next {
+  float: left;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+.days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 15%; /* Adjust the width of day boxes */
+  height: 50px; /* Adjust the height of day boxes */
+  text-align: center;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #777;
+  cursor: pointer;
+}
+
+.days li.active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white;
+}
+
+.tasks {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.tasks h2 {
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<h1>CSS Calendar with Tasks</h1>
+
+<div class="month">      
+  <ul>
+    <li class="prev" onclick="prevMonth()">&#10094;</li>
+    <li id="monthYear">
+      April<br>
+      <span style="font-size:18px">2024</span>
+    </li>
+    <li class="next" onclick="nextMonth()">&#10095;</li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+<ul class="days" id="daysList">  
+  <!-- Days will be dynamically generated here -->
+</ul>
+
+<!-- Navigation buttons for Previous and Next Month -->
+<div class="tasks">
+  <button onclick="prevMonth()">Previous Month</button>
+  <button onclick="nextMonth()">Next Month</button>
+</div>
+
+<!-- Tasks for specific dates -->
+<div class="tasks" id="dateTasksSection">
+  <h2>Tasks for Selected Date:</h2>
+  <ul id="dateTasksList">
+    <!-- Tasks for the selected date will be dynamically displayed here -->
+  </ul>
+</div>
+
+<script>
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+var tasksByMonth = {
+  January: { 
+    1: ["New Year's Day", "Meeting with Clients"],
+    15: ["Team Building", "Project Kickoff"]
+  },
+  February: { 
+    14: ["Valentine's Day"],
+    28: ["Report Submission"]
+  },
+  March: { 
+    8: ["International Women's Day"],
+    20: ["Spring Equinox"]
+  },
+  April: { 
+    1: ["April Fools' Day"],
+    22: ["Earth Day"]
+  },
+  May: { 
+    9: ["Mother's Day"],
+    30: ["Memorial Day"]
+  },
+  June: { 
+    14: ["Flag Day"],
+    21: ["Father's Day"]
+  },
+  July: { 
+    4: ["Independence Day"],
+    20: ["Company Picnic"]
+  },
+  August: { 
+    1: ["Quarterly Review"],
+    15: ["Team Lunch"]
+  },
+  September: { 
+    6: ["Labor Day"],
+    22: ["Autumn Equinox"]
+  },
+  October: { 
+    31: ["Halloween"]
+  },
+  November: { 
+    11: ["Veterans Day"],
+    25: ["Thanksgiving"]
+  },
+  December: { 
+    25: ["Christmas Day"],
+    31: ["New Year's Eve"]
+  }
+};
+
+function nextMonth() {
+  var monthYearElement = document.getElementById('monthYear');
+  var currentMonthName = monthYearElement.firstChild.textContent.trim();
+  var currentYear = parseInt(monthYearElement.querySelector('span').textContent);
+
+  var currentMonthIndex = months.indexOf(currentMonthName);
+  var nextMonthIndex = (currentMonthIndex + 1) % 12;
+  var nextYear = (nextMonthIndex === 0) ? currentYear + 1 : currentYear;
+
+  monthYearElement.firstChild.textContent = months[nextMonthIndex];
+  monthYearElement.querySelector('span').textContent = nextYear;
+
+  updateDaysList(nextYear, nextMonthIndex);
+}
+
+function prevMonth() {
+  var monthYearElement = document.getElementById('monthYear');
+  var currentMonthName = monthYearElement.firstChild.textContent.trim();
+  var currentYear = parseInt(monthYearElement.querySelector('span').textContent);
+
+  var currentMonthIndex = months.indexOf(currentMonthName);
+  var prevMonthIndex = (currentMonthIndex - 1 + 12) % 12;
+  var prevYear = (prevMonthIndex === 11) ? currentYear - 1 : currentYear;
+
+  monthYearElement.firstChild.textContent = months[prevMonthIndex];
+  monthYearElement.querySelector('span').textContent = prevYear;
+
+  updateDaysList(prevYear, prevMonthIndex);
+}
+
+function updateDaysList(year, monthIndex) {
+  var daysListElement = document.getElementById('daysList');
+  daysListElement.innerHTML = '';
+
+  var daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+
+  for (var day = 1; day <= daysInMonth; day++) {
+    var li = document.createElement('li');
+    li.textContent = day;
+    li.setAttribute('onclick', 'showDateTasks(' + day + ')');
+    daysListElement.appendChild(li);
+  }
+}
+
+function showDateTasks(day) {
+  var dateTasksListElement = document.getElementById('dateTasksList');
+  dateTasksListElement.innerHTML = '';
+
+  var monthYearElement = document.getElementById('monthYear');
+  var currentMonthName = monthYearElement.firstChild.textContent.trim();
+  var dateKey = day.toString();
+
+  if (tasksByMonth.hasOwnProperty(currentMonthName) && tasksByMonth[currentMonthName].hasOwnProperty(dateKey)) {
+    var tasks = tasksByMonth[currentMonthName][dateKey];
+
+    tasks.forEach(function(task) {
+      var li = document.createElement('li');
+      li.textContent = task;
+      dateTasksListElement.appendChild(li);
+    });
+  } else {
+    var li = document.createElement('li');
+    li.textContent = "No tasks for this date.";
+    dateTasksListElement.appendChild(li);
+  }
+}
+
+// Initialize days list for the current month on page load
+var currentMonthYearElement = document.getElementById('monthYear');
+var currentMonthName = currentMonthYearElement.firstChild.textContent.trim();
+var currentYearValue = parseInt(currentMonthYearElement.querySelector('span').textContent);
+var currentMonthIndexValue = months.indexOf(currentMonthName);
+
+updateDaysList(currentYearValue, currentMonthIndexValue);
+</script>
+
+</body>
+</html>
